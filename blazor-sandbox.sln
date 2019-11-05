@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29424.173
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-sandbox", "blazor-sandbox\blazor-sandbox.csproj", "{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-sandbox", "data-sandbox\data-sandbox.csproj", "{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C6E53DB8-11FD-4F14-892B-EFC458261211}
+	EndGlobalSection
+EndGlobal
