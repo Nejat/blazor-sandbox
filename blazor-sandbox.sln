@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29424.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "blazor-sandbox", "blazor-sandbox\blazor-sandbox.csproj", "{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "blazor-sandbox", "blazor-sandbox\blazor-sandbox.csproj", "{AAB9E66D-183B-47FC-BBEF-C4CD46347AAF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-sandbox", "data-sandbox\data-sandbox.csproj", "{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-sandbox", "data-sandbox\data-sandbox.csproj", "{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{08CFE9A0-091F-4C4B-ADA0-7170540B4E03}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-model", "..\data-model\data-model.csproj", "{D4FCA245-1DEC-49F3-AB4E-339ECCEE0B19}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB8CB4F0-6003-4D29-95C9-B5192632B3A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08CFE9A0-091F-4C4B-ADA0-7170540B4E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08CFE9A0-091F-4C4B-ADA0-7170540B4E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08CFE9A0-091F-4C4B-ADA0-7170540B4E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08CFE9A0-091F-4C4B-ADA0-7170540B4E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4FCA245-1DEC-49F3-AB4E-339ECCEE0B19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4FCA245-1DEC-49F3-AB4E-339ECCEE0B19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4FCA245-1DEC-49F3-AB4E-339ECCEE0B19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4FCA245-1DEC-49F3-AB4E-339ECCEE0B19}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

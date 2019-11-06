@@ -1,0 +1,15 @@
+version: '3.4'
+
+services:
+  blazor-sandbox:
+    image: ${DOCKER_REGISTRY-}blazorsandbox
+    build:
+      context: .
+      dockerfile: blazor-sandbox/Dockerfile
+
+  data-sandbox:
+    image: ${DOCKER_REGISTRY-}datasandbox
+    build:
+      context: .
+      dockerfile: data-sandbox/Dockerfile
+

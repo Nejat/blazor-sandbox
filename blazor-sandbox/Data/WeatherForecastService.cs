@@ -1,37 +1,29 @@
 using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 
-using static System.Linq.Enumerable;
-using static System.Threading.Tasks.Task;
+using Data.Model;
+
+using static System.Text.Json.JsonSerializer;
 
 namespace Sandbox.Blazor.Data
 {
     public class WeatherForecastService
     {
-        private static readonly string[] SUMMARIES = {
-                                                         "Freezing", "Bracing", "Chilly", "Cool"
-                                                       , "Mild", "Warm", "Balmy", "Hot"
-                                                       , "Sweltering", "Scorching"
-                                                     };
-
-        public Task<WeatherForecast[]> GetForecastAsync (DateTime startDate)
+        public async Task<WeatherForecast[]> GetForecastAsync (DateTime startDate)
         {
-            var rng = new Random();
+            using var client = new HttpClient();
 
-            return FromResult
-            (
-                Range(start: 1, count: 5)
-                   .Select
-                    (
-                        index => new WeatherForecast
-                                 {
-                                     Date         = startDate.AddDays(index)
-                                   , TemperatureC = rng.Next(minValue: -20, maxValue: 55)
-                                   , Summary      = SUMMARIES[rng.Next(SUMMARIES.Length)]
-                                 }
-                    )
-                   .ToArray()
-            );
+            var request = new HttpRequestMessage
+                          {
+                              RequestUri = new Uri($"http://data-sandbox/api/weatherforecast/{startDate:yyyy-MM-dd}")
+                          };
+
+            var response = await client.SendAsync(request);
+            var json     = await response.Content.ReadAsStringAsync();
+            var result   = Deserialize<WeatherForecast[]>(json);
+
+            return result;
         }
     }
 }

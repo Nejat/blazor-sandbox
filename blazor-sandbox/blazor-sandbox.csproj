@@ -5,6 +5,17 @@
     <RootNamespace>Sandbox.Blazor</RootNamespace>
     <LangVersion>8</LangVersion>
     <Nullable>enable</Nullable>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <UserSecretsId>3bf815fe-569a-43f9-a611-103dc7d2dcbb</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\data-model\data-model.csproj" />
+  </ItemGroup>
 
 </Project>
