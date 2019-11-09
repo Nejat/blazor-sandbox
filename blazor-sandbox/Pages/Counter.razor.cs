@@ -6,6 +6,7 @@ namespace Sandbox.Blazor.Pages
     {
         protected int CurrentCount { get; private set; }
 
+        // ReSharper disable once UnusedMember.Global
         protected void IncrementCount() => CurrentCount++;
     }
 }

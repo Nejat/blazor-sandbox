@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
+using Microsoft.Extensions.Configuration;
 
 using Toolbox;
 
@@ -13,10 +14,13 @@ namespace Sandbox.Blazor.Pages
 {
     public class UpdatesBase : ComponentBase
     {
-        private readonly HubConnection _connection = new HubConnectionBuilder()
-                                                    .WithUrl(url: "http://signalr-sandbox/realtime")
-                                                    .WithAutomaticReconnect()
-                                                    .Build();
+        [Inject]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        private HubConnection? RealtimeConnection { get; set; }
+
+        [Inject]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
+        private IConfiguration? Configuration { get; set; }
 
         private bool Connected { get; set; }
 
@@ -28,12 +32,20 @@ namespace Sandbox.Blazor.Pages
 
         private protected bool NoConnectionIssues => !Receive || Connected;
 
-        protected RingBuffer<string> Updates { get; } = new RingBuffer<string>(capacity: 10);
+        protected RingBuffer<string>? Updates { get; private set; }
 
         protected string UpdatesButtonLabel => Receive ? "Disable" : "Enable";
 
+        // ReSharper disable once UnusedMember.Global
         protected async Task UpdatesClicked ()
         {
+            if (RealtimeConnection is null)
+            {
+                ErrorMessage = "SignalR Connection was not configured";
+
+                return;
+            }
+
             ErrorMessage = Empty;
 
             Receive = !Receive;
@@ -44,7 +56,7 @@ namespace Sandbox.Blazor.Pages
                 {
                     Connected = true;
 
-                    await _connection.StartAsync();
+                    await RealtimeConnection.StartAsync();
                 } 
                 catch (Exception exception)
                 {
@@ -56,7 +68,7 @@ namespace Sandbox.Blazor.Pages
             {
                 try
                 {
-                    await _connection.StopAsync();
+                    await RealtimeConnection.StopAsync();
 
                     PrimeUpdates();
                 } 
@@ -71,17 +83,26 @@ namespace Sandbox.Blazor.Pages
 
         protected override void OnInitialized ()
         {
+            if (RealtimeConnection is null || Configuration is null)
+            {
+                Updates = new RingBuffer<string>(capacity: 0);
+
+                return;
+            }
+
+            Updates = new RingBuffer<string>(Configuration.GetValue(key: "Updates-BufferSize", defaultValue: 10));
+
             PrimeUpdates();
 
-            _connection.Closed += async _ =>
+            RealtimeConnection.Closed += async _ =>
                                   {
                                       ErrorMessage = Empty;
                                       Connected    = false;
 
-                                      if (Receive) await _connection.StartAsync();
+                                      if (Receive) await RealtimeConnection.StartAsync();
                                   };
 
-            _connection.Reconnected += _ =>
+            RealtimeConnection.Reconnected += _ =>
                                        {
                                            ErrorMessage = Empty;
                                            Connected    = true;
@@ -89,7 +110,7 @@ namespace Sandbox.Blazor.Pages
                                            return CompletedTask;
                                        };
 
-            _connection.Reconnecting += _ =>
+            RealtimeConnection.Reconnecting += _ =>
                                         {
                                             ErrorMessage = Empty;
                                             Connected    = false;
@@ -97,7 +118,7 @@ namespace Sandbox.Blazor.Pages
                                             return CompletedTask;
                                         };
 
-            _connection.On<string>
+            RealtimeConnection.On<string>
             (
                 methodName: "statusUpdate"
               , status =>
@@ -113,6 +134,8 @@ namespace Sandbox.Blazor.Pages
 
         private void PrimeUpdates ()
         {
+            if (Updates is null) return;
+
             Updates.Clear();
 
             for (var idx = 0; idx < Updates.Capacity; idx++) Updates.Write(value: " waiting ... ");

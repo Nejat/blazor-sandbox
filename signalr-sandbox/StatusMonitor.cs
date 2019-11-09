@@ -10,6 +10,7 @@ using static System.Threading.Tasks.Task;
 
 namespace Sandbox.SignalR
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class StatusMonitor : BackgroundService
     {
         public StatusMonitor (IHubContext<RealtimeHub> hubContext) { HubContext = hubContext; }
@@ -23,6 +24,8 @@ namespace Sandbox.SignalR
             var random = new Random(Seed: 42);
 
             loop:
+
+            if (cancellation.IsCancellationRequested) return;
 
             await Delay(random.Next(minValue: 1, maxValue: 5) * 100, cancellation);
 

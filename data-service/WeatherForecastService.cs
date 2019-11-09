@@ -6,7 +6,7 @@ using Data.Model;
 
 using static System.Text.Json.JsonSerializer;
 
-namespace Sandbox.Blazor.Data
+namespace Data.Service
 {
     public class WeatherForecastService
     {

@@ -1,20 +1,22 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-using Data.Model;
+using Data.Service;
 
 using Microsoft.AspNetCore.Components;
 
-using Sandbox.Blazor.Data;
+using static System.DateTime;
+
+using IWeatherForecasts = System.Collections.Generic.IEnumerable<Data.Model.WeatherForecast>;
 
 namespace Sandbox.Blazor.Pages
 {
     public class FetchDataBase : ComponentBase
     {
         [Inject]
+        // ReSharper disable once UnusedAutoPropertyAccessor.Local
         private WeatherForecastService? ForecastService { get; set; }
 
-        protected WeatherForecast[]? Forecasts { get; private set; }
+        protected IWeatherForecasts? Forecasts { get; private set; }
 
         #region Overrides of ComponentBase
 
@@ -22,7 +24,7 @@ namespace Sandbox.Blazor.Pages
         {
             if (ForecastService is null) return;
 
-            Forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
+            Forecasts = await ForecastService.GetForecastAsync(Now);
         }
 
         #endregion

@@ -1,10 +1,13 @@
+using Data.Service;
+
+using gRPC.Client;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
-using Sandbox.Blazor.Data;
 
 namespace Sandbox.Blazor
 {
@@ -24,6 +27,37 @@ namespace Sandbox.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+
+            services.AddTransient
+            (
+                _ => new HubConnectionBuilder().WithUrl
+                                                (
+                                                    Configuration.GetValue
+                                                    (
+                                                        key: "Services.SignalR-Realtime"
+                                                      , defaultValue: "http://signalr-sandbox/realtime"
+                                                    )
+                                                )
+                                               .WithAutomaticReconnect()
+                                               .Build()
+            );
+
+            services.AddTransient
+            (
+                _ =>
+                {
+                    var address = Configuration.GetValue
+                    (
+                        key: "Services.gRPC-Greeter"
+                      , defaultValue: "https://grpc-sandbox"
+                    );
+#if DEBUG
+                    return new GreeterClient(address, dangerousUntrustedCertificates: true);
+#else
+                    return new GreeterClient(address);
+#endif
+                }
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

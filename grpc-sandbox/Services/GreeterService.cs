@@ -6,11 +6,12 @@ using ILogger = Microsoft.Extensions.Logging.ILogger<Sandbox.gRPC.Services.Greet
 
 namespace Sandbox.gRPC.Services
 {
+    // ReSharper disable once ClassNeverInstantiated.Global
     public class GreeterService : Greeter.GreeterBase
     {
-        public GreeterService (ILogger logger) { _logger = logger; }
+        public GreeterService (ILogger logger) { Logger = logger; }
 
-        private readonly ILogger _logger;
+        private ILogger Logger { get; }
 
         public override Task<HelloReply> SayHello
         (

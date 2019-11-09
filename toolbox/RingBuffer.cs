@@ -5,6 +5,7 @@ using System.Collections.Generic;
 namespace Toolbox
 {
     public class RingBuffer<T> : ICollection, IReadOnlyCollection<T>
+        where T: class
     {
         private readonly Queue<T> _buffer;
 
@@ -16,7 +17,7 @@ namespace Toolbox
 
         public int Capacity { get; }
 
-        public bool Read (out T value)
+        public bool Read (out T? value)
         {
             if (_buffer.Count == 0)
             {

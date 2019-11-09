@@ -16,6 +16,6 @@ namespace Data.Model
         public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 
         [JsonPropertyName(nameof(Summary))]
-        public string Summary { get; set; }
+        public string? Summary { get; set; }
     }
 }

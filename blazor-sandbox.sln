@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "signalr-sandbox", "signalr-
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toolbox", "toolbox\toolbox.csproj", "{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-service", "data-service\data-service.csproj", "{D8322C7C-8709-4F69-B3F4-627E97130EC3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC-client", "gRPC-client\gRPC-client.csproj", "{D7E79A19-C7D8-4DB1-9904-F846E451EC27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8322C7C-8709-4F69-B3F4-627E97130EC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8322C7C-8709-4F69-B3F4-627E97130EC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8322C7C-8709-4F69-B3F4-627E97130EC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8322C7C-8709-4F69-B3F4-627E97130EC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
