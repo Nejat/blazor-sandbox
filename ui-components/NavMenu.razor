@@ -1,0 +1,21 @@
+﻿@inherits NavMenuBase
+
+<div class="top-row pl-4 navbar navbar-dark">
+    <a class="navbar-brand" href="">@Title</a>
+    <button class="navbar-toggler" @onclick="ToggleNavMenu">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+</div>
+
+<div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+    <ul class="nav flex-column">
+        @foreach (var navItem in NavItems)
+        {
+            <li class="nav-item px-3">
+                <NavLink class="nav-link" href="@navItem.Route" Match="@navItem.Match">
+                    <span class="oi @navItem.OpenIconicIcon" aria-hidden="true"></span> @navItem.Text
+                </NavLink>
+            </li>
+        }
+    </ul>
+</div>

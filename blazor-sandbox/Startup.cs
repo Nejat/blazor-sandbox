@@ -9,6 +9,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
+using INavItems = System.Collections.Generic.IEnumerable<Components.UI.Models.NavItem>;
+using NavItems = System.Collections.Generic.List<Components.UI.Models.NavItem>;
+
 namespace Sandbox.Blazor
 {
     public class Startup
@@ -27,7 +30,19 @@ namespace Sandbox.Blazor
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            
+            services.AddSingleton<INavItems>
+            (
+                _ =>
+                {
+                    var items = new NavItems();
 
+                    Configuration.Bind(key: "NavigationItems", items);
+
+                    return items;
+                }
+            );
+            
             services.AddTransient
             (
                 _ => new HubConnectionBuilder().WithUrl
