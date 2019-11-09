@@ -1,6 +1,5 @@
-﻿@page "/updates"
-@using Microsoft.AspNetCore.SignalR.Client
-@using Toolbox
+﻿@inherits UpdatesBase
+@page "/updates"
 
 <h1>Updates</h1>
 <h3 class="text-secondary">SignalR Demo</h3>
@@ -14,7 +13,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var update in _updates)
+        @foreach (var update in Updates)
         {
             <tr>
                 <td>@update</td>
@@ -25,112 +24,11 @@
 
 <p />
 
-<button class="btn btn-primary" @onclick="UpdatesClicked">@(_receive ? "Disable" : "Enable") Updates</button>
+<button class="btn btn-primary" @onclick="UpdatesClicked">@UpdatesButtonLabel Updates</button>
 
 <p />
 
 <div>
-    <div class="alert-danger" hidden="@(!string.IsNullOrWhiteSpace(_errorMessage))">@_errorMessage</div>
-    <div class="alert-danger" hidden="@(!_receive || _connected)">No Connection, Attempting to Reconnect</div>
+    <div class="alert-danger" hidden="@NoErrorMessage">@ErrorMessage</div>
+    <div class="alert-danger" hidden="@NoConnectionIssues">No Connection, Attempting to Reconnect</div>
 </div>
-
-@code
-{
-    readonly RingBuffer<string> _updates = new RingBuffer<string>(capacity: 10);
-
-    readonly HubConnection _connection = new HubConnectionBuilder().WithUrl(url: "http://signalr-sandbox/realtime")
-                                                                   .WithAutomaticReconnect()
-                                                                   .Build();
-
-    private bool _receive = false;
-    private bool _connected = false;
-    private string _errorMessage = string.Empty;
-
-    async Task UpdatesClicked()
-    {
-        _errorMessage = string.Empty;
-
-        _receive = !_receive;
-
-        if (_receive)
-        {
-            try
-            {
-                _connected = true;
-
-                await _connection.StartAsync();
-            }
-            catch (Exception e)
-            {
-                _errorMessage = e.Message;
-                _connected = false;
-            }
-        }
-        else
-        {
-            try
-            {
-                await _connection.StopAsync();
-
-                PrimeUpdates();
-            }
-            catch (Exception e)
-            {
-                _errorMessage = e.Message;
-            }
-        }
-    }
-
-    #region Overrides of ComponentBase
-
-    protected override void OnInitialized()
-    {
-        PrimeUpdates();
-
-        _connection.Closed += async _ =>
-        {
-            _errorMessage = string.Empty;
-            _connected = false;
-
-            if (_receive) await _connection.StartAsync();
-        };
-
-        _connection.Reconnected += _ =>
-        {
-            _errorMessage = string.Empty;
-            _connected = true;
-
-            return Task.CompletedTask;
-        };
-
-        _connection.Reconnecting += _ =>
-        {
-            _errorMessage = string.Empty;
-            _connected = false;
-
-            return Task.CompletedTask;
-        };
-
-        _connection.On<string>
-        (
-            methodName: "statusUpdate"
-          , (status) =>
-          {
-              _updates.Write(status);
-
-              StateHasChanged();
-          }
-        );
-    }
-
-    #endregion
-
-    private void PrimeUpdates()
-    {
-        _updates.Clear();
-
-        for (var idx = 0; idx < _updates.Capacity; idx++) _updates.Write(value: " waiting ... ");
-
-        StateHasChanged();
-    }
-}

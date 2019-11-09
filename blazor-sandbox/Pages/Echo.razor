@@ -1,6 +1,5 @@
-﻿@page "/echo"
-@using Grpc.Net.Client
-@using Sandbox.gRPC
+﻿@inherits EchoBase
+@page "/echo"
 
 <h1>Echo</h1>
 <h3 class="text-secondary">gRPC Demo</h3>
@@ -9,54 +8,16 @@
 
 <h5 class="text-primary">Enter you name</h5>
 
-<input type="text" @bind="@(_name)" @bind:event="oninput" />
+<input type="text" @bind="@(Name)" @bind:event="oninput" />
 
 <p />
 
-<button class="btn btn-primary" disabled="@(_name.Length < 1)" @onclick="SendMessage">Send</button>
+<button class="btn btn-primary" disabled="@(!ValidName)" @onclick="SendMessage">Send</button>
 
 <p />
 
-<h3 hidden="@(_response.Length < 1)">Echoed: @(_response)</h3>
+<h3 hidden="@(!HasResponse)">Echoed: @Response</h3>
 
 <p />
 
-<span class="alert-danger" hidden="@(_error.Length < 1)">ERROR: @(_error)</span>
-
-@code {
-
-    string _name = string.Empty;
-    string _response = string.Empty;
-    string _error = string.Empty;
-
-    async Task SendMessage()
-    {
-        try
-        {
-            var name = _name;
-
-            _name = string.Empty;
-
-#if DEBUG
-            var httpClientHandler = new HttpClientHandler
-            {
-                // Return `true` to allow certificates that are untrusted/invalid
-                ServerCertificateCustomValidationCallback = HttpClientHandler.DangerousAcceptAnyServerCertificateValidator
-            };
-
-            var httpClient = new HttpClient(httpClientHandler);
-
-            var channel = GrpcChannel.ForAddress(address: "https://grpc-sandbox", new GrpcChannelOptions { HttpClient = httpClient });
-#else
-            var channel = GrpcChannel.ForAddress(address: "https://grpc-sandbox");
-#endif
-            var client = new Greeter.GreeterClient(channel);
-
-            _response = (await client.SayHelloAsync(new HelloRequest { Name = name })).Message;
-        }
-        catch (Exception exception)
-        {
-            _error = exception.Message;
-        }
-    }
-}
+<span class="alert-danger" hidden="@(!HasError)">ERROR: @Error</span>

@@ -1,14 +1,12 @@
-﻿@page "/fetchdata"
-@using global::Data.Model
-@using Sandbox.Blazor.Data
-@inject WeatherForecastService ForecastService
+﻿@inherits FetchDataBase
+@page "/fetchdata"
 
 <h1>Weather forecast</h1>
 <h3 class="text-secondary">ASP.NET API Demo</h3>
 
 <p>This component demonstrates fetching data from a service.</p>
 
-@if (_forecasts == null)
+@if (Forecasts == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -24,7 +22,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in _forecasts)
+            @foreach (var forecast in Forecasts)
             {
                 <tr>
                     <td>@forecast.Date.ToShortDateString()</td>
@@ -35,13 +33,4 @@ else
             }
         </tbody>
     </table>
-}
-
-@code {
-    WeatherForecast[]? _forecasts;
-
-    protected override async Task OnInitializedAsync()
-    {
-        _forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
-    }
 }
