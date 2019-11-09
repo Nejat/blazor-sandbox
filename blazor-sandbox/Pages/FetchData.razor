@@ -4,6 +4,7 @@
 @inject WeatherForecastService ForecastService
 
 <h1>Weather forecast</h1>
+<h3 class="text-secondary">ASP.NET API Demo</h3>
 
 <p>This component demonstrates fetching data from a service.</p>
 
@@ -37,7 +38,7 @@ else
 }
 
 @code {
-    WeatherForecast[] _forecasts;
+    WeatherForecast[]? _forecasts;
 
     protected override async Task OnInitializedAsync()
     {

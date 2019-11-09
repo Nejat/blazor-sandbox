@@ -13,6 +13,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "grpc-sandbox", "grpc-sandbo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "data-model", "data-model\data-model.csproj", "{C96C1FEF-5C83-44B5-83A8-B6BA7373E887}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "signalr-sandbox", "signalr-sandbox\signalr-sandbox.csproj", "{C46D7D66-BB7E-4566-88A8-1A5A178E6E1E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "toolbox", "toolbox\toolbox.csproj", "{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{C96C1FEF-5C83-44B5-83A8-B6BA7373E887}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C96C1FEF-5C83-44B5-83A8-B6BA7373E887}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C96C1FEF-5C83-44B5-83A8-B6BA7373E887}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C46D7D66-BB7E-4566-88A8-1A5A178E6E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C46D7D66-BB7E-4566-88A8-1A5A178E6E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C46D7D66-BB7E-4566-88A8-1A5A178E6E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C46D7D66-BB7E-4566-88A8-1A5A178E6E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{685CF1AA-4DCB-49F4-AA4A-B59A1F50AD1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
