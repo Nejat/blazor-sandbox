@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Components;
 
 using Sandbox.gRPC;
 
-namespace Sandbox.Blazor.Pages
+namespace Sandbox.Razor.Components.Pages
 {
     public class EchoBase : ComponentBase
     {

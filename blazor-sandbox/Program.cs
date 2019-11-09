@@ -17,7 +17,14 @@ namespace Sandbox.Blazor
         private static IHostBuilder CreateHostBuilder (string[] args)
         {
             return CreateDefaultBuilder(args)
-               .ConfigureWebHostDefaults(webBuilder => webBuilder.UseStartup<Startup>());
+               .ConfigureWebHostDefaults
+                (
+                    webBuilder =>
+                    {
+                        webBuilder.UseStaticWebAssets();
+                        webBuilder.UseStartup<Startup>();
+                    }
+                );
         }
     }
 }

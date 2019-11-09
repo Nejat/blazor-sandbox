@@ -8,7 +8,7 @@ using static System.DateTime;
 
 using IWeatherForecasts = System.Collections.Generic.IEnumerable<Data.Model.WeatherForecast>;
 
-namespace Sandbox.Blazor.Pages
+namespace Sandbox.Razor.Components.Pages
 {
     public class FetchDataBase : ComponentBase
     {

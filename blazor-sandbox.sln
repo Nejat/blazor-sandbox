@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "data-service", "data-servic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gRPC-client", "gRPC-client\gRPC-client.csproj", "{D7E79A19-C7D8-4DB1-9904-F846E451EC27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "razor-components-sandbox", "razor-components-sandbox\razor-components-sandbox.csproj", "{0519BDC0-5C92-46A6-80AD-D9A61A200881}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7E79A19-C7D8-4DB1-9904-F846E451EC27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0519BDC0-5C92-46A6-80AD-D9A61A200881}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0519BDC0-5C92-46A6-80AD-D9A61A200881}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0519BDC0-5C92-46A6-80AD-D9A61A200881}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0519BDC0-5C92-46A6-80AD-D9A61A200881}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

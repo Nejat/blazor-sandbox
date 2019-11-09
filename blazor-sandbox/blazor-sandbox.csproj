@@ -16,10 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\data-model\data-model.csproj" />
     <ProjectReference Include="..\data-service\data-service.csproj" />
     <ProjectReference Include="..\gRPC-client\gRPC-client.csproj" />
-    <ProjectReference Include="..\toolbox\toolbox.csproj" />
+    <ProjectReference Include="..\razor-components-sandbox\razor-components-sandbox.csproj" />
   </ItemGroup>
 
 </Project>
