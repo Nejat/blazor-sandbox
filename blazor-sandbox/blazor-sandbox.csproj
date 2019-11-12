@@ -18,7 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\data-service\data-service.csproj" />
     <ProjectReference Include="..\gRPC-client\gRPC-client.csproj" />
-    <ProjectReference Include="..\razor-components-sandbox\razor-components-sandbox.csproj" />
+    <ProjectReference Include="..\razor-components\razor-components.csproj" />
     <ProjectReference Include="..\ui-components\ui-components.csproj" />
   </ItemGroup>
 

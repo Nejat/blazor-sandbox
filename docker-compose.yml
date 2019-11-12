@@ -13,17 +13,14 @@ services:
       context: .
       dockerfile: data-sandbox/Dockerfile
 
-
   grpc-sandbox:
     image: ${DOCKER_REGISTRY-}grpcsandbox
     build:
       context: .
       dockerfile: grpc-sandbox/Dockerfile
 
-
   signalr-sandbox:
     image: ${DOCKER_REGISTRY-}signalrsandbox
     build:
       context: .
       dockerfile: signalr-sandbox/Dockerfile
-

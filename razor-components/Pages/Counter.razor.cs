@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 
-namespace Sandbox.Razor.Components.Pages
+namespace Razor.Components.Pages
 {
     public class CounterBase : ComponentBase
     {

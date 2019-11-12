@@ -10,7 +10,7 @@ using Toolbox;
 using static System.String;
 using static System.Threading.Tasks.Task;
 
-namespace Sandbox.Razor.Components.Pages
+namespace Razor.Components.Pages
 {
     public class UpdatesBase : ComponentBase
     {

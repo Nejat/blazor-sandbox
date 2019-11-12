@@ -5,19 +5,20 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=https://+:443;http://+:80
-      - ASPNETCORE_HTTPS_PORT=44302
+      - ASPNETCORE_HTTPS_PORT=44300
     ports:
-      - "58428:80"
-      - "44302:443"
+      - "55000:80"
+      - "44300:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+  
   data-sandbox:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "80"
-
+      - "55010:80"
 
   grpc-sandbox:
     environment:
@@ -25,7 +26,7 @@ services:
       - ASPNETCORE_URLS=https://+:443;http://+:80
       - ASPNETCORE_HTTPS_PORT=44310
     ports:
-      - "55010:80"
+      - "55020:80"
       - "44310:443"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
@@ -34,6 +35,6 @@ services:
   signalr-sandbox:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
     ports:
-      - "80"
-
+      - "55030:80"
