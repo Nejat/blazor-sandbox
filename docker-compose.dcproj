@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>1263d3db-b8fd-4074-a684-dc4a2a8ce4b8</ProjectGuid>
+    <ProjectGuid>9f27b007-ed4c-43bb-b8d9-664df017db99</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}</DockerServiceUrl>
     <DockerServiceName>blazor-sandbox</DockerServiceName>

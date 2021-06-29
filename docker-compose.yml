@@ -2,25 +2,28 @@ version: '3.4'
 
 services:
   blazor-sandbox:
-    image: ${DOCKER_REGISTRY}-blazorsandbox
+    image: ${DOCKER_REGISTRY-}blazorsandbox
     build:
       context: .
       dockerfile: blazor-sandbox/Dockerfile
 
   data-sandbox:
-    image: ${DOCKER_REGISTRY}-datasandbox
+    image: ${DOCKER_REGISTRY-}datasandbox
     build:
       context: .
       dockerfile: data-sandbox/Dockerfile
 
+
   grpc-sandbox:
-    image: ${DOCKER_REGISTRY}-grpcsandbox
+    image: ${DOCKER_REGISTRY-}grpcsandbox
     build:
       context: .
       dockerfile: grpc-sandbox/Dockerfile
 
+
   signalr-sandbox:
-    image: ${DOCKER_REGISTRY}-signalrsandbox
+    image: ${DOCKER_REGISTRY-}signalrsandbox
     build:
       context: .
       dockerfile: signalr-sandbox/Dockerfile
+
