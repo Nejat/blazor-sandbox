@@ -4,7 +4,6 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.SignalR.Client;
 using Microsoft.Extensions.Configuration;
-
 using Toolbox;
 
 using static System.String;
@@ -90,7 +89,7 @@ namespace Razor.Components.Pages
                 return;
             }
 
-            Updates = new RingBuffer<string>(Configuration.GetValue(key: "Updates-BufferSize", defaultValue: 10));
+            Updates = new RingBuffer<string>(Configuration.GetValue<int>(key: "Updates-BufferSize", defaultValue: 10));
 
             PrimeUpdates();
 

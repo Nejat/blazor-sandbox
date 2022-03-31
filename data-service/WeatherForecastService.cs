@@ -10,7 +10,7 @@ namespace Data.Service
 {
     public class WeatherForecastService
     {
-        public async Task<WeatherForecast[]> GetForecastAsync (DateTime startDate)
+        public async Task<WeatherForecast[]?> GetForecastAsync (DateTime startDate)
         {
             using var client = new HttpClient();
 
