@@ -17,10 +17,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\data-service\data-service.csproj" />
-    <ProjectReference Include="..\gRPC-client\gRPC-client.csproj" />
-    <ProjectReference Include="..\razor-components\razor-components.csproj" />
-    <ProjectReference Include="..\ui-components\ui-components.csproj" />
+    <ProjectReference Include="..\libraries\data-service\data-service.csproj" />
+    <ProjectReference Include="..\libraries\gRPC-client\gRPC-client.csproj" />
+    <ProjectReference Include="..\libraries\razor-components\razor-components.csproj" />
+    <ProjectReference Include="..\libraries\ui-components\ui-components.csproj" />
   </ItemGroup>
 
 </Project>
