@@ -6,11 +6,10 @@ using Microsoft.AspNetCore.Components;
 
 using INavItems = System.Collections.Generic.IEnumerable<Components.UI.Models.NavItem>;
 
-namespace Sandbox.Blazor.Shared
+namespace Sandbox.Blazor.Shared;
+
+public class MainLayoutBase : LayoutComponentBase
 {
-    public class MainLayoutBase : LayoutComponentBase
-    {
-        [Inject]
-        protected INavItems NavItems { get; private set; } = Array.Empty<NavItem>();
-    }
+    [Inject]
+    protected INavItems NavItems { get; private set; } = Array.Empty<NavItem>();
 }

@@ -8,32 +8,31 @@ using Microsoft.Extensions.Hosting;
 using static System.Guid;
 using static System.Threading.Tasks.Task;
 
-namespace Sandbox.SignalR
+namespace Sandbox.SignalR;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class StatusMonitor : BackgroundService
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class StatusMonitor : BackgroundService
+    public StatusMonitor (IHubContext<RealtimeHub> hubContext) { HubContext = hubContext; }
+
+    private IHubContext<RealtimeHub> HubContext { get; }
+
+    #region Overrides of BackgroundService
+
+    protected override async Task ExecuteAsync (CancellationToken cancellation)
     {
-        public StatusMonitor (IHubContext<RealtimeHub> hubContext) { HubContext = hubContext; }
+        var random = new Random(Seed: 42);
 
-        private IHubContext<RealtimeHub> HubContext { get; }
+        loop:
 
-        #region Overrides of BackgroundService
+        if (cancellation.IsCancellationRequested) return;
 
-        protected override async Task ExecuteAsync (CancellationToken cancellation)
-        {
-            var random = new Random(Seed: 42);
+        await Delay(random.Next(minValue: 1, maxValue: 5) * 100, cancellation);
 
-            loop:
+        await HubContext.Clients.All.SendAsync(method: "statusUpdate", NewGuid().ToString(), cancellation);
 
-            if (cancellation.IsCancellationRequested) return;
-
-            await Delay(random.Next(minValue: 1, maxValue: 5) * 100, cancellation);
-
-            await HubContext.Clients.All.SendAsync(method: "statusUpdate", NewGuid().ToString(), cancellation);
-
-            goto loop;
-        }
-
-        #endregion
+        goto loop;
     }
+
+    #endregion
 }

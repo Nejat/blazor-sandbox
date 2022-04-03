@@ -17,6 +17,8 @@
         @(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))
     </app>
 
+@* ReSharper disable Html.PathError *@
     <script src="_framework/blazor.server.js"></script>
+@* ReSharper restore Html.PathError *@
 </body>
 </html>

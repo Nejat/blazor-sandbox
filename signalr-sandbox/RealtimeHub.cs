@@ -1,10 +1,9 @@
 
 using Microsoft.AspNetCore.SignalR;
 
-namespace Sandbox.SignalR
+namespace Sandbox.SignalR;
+
+// ReSharper disable once ClassNeverInstantiated.Global
+public class RealtimeHub : Hub
 {
-    // ReSharper disable once ClassNeverInstantiated.Global
-    public class RealtimeHub : Hub
-    {
-    }
 }

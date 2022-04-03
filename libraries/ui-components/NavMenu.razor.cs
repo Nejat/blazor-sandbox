@@ -8,26 +8,25 @@ using static System.String;
 
 using INavItems = System.Collections.Generic.IEnumerable<Components.UI.Models.NavItem>;
 
-namespace Components.UI
+namespace Components.UI;
+
+public class NavMenuBase : ComponentBase
 {
-    public class NavMenuBase : ComponentBase
-    {
-        [Parameter]
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
-        public string Title { get; set; } = Empty;
+    [Parameter]
+    // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
+    public string Title { get; set; } = Empty;
 
-        [Parameter]
-        // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
-        public INavItems NavItems { get; set; } = Array.Empty<NavItem>();
+    [Parameter]
+    // ReSharper disable once AutoPropertyCanBeMadeGetOnly.Global
+    public INavItems NavItems { get; set; } = Array.Empty<NavItem>();
 
-        private bool CollapseNavMenu { get; set; } = true;
+    private bool CollapseNavMenu { get; set; } = true;
 
-        protected string? NavMenuCssClass =>
-            CollapseNavMenu
-                ? "collapse"
-                : default;
+    protected string? NavMenuCssClass =>
+        CollapseNavMenu
+            ? "collapse"
+            : default;
 
-        // ReSharper disable once UnusedMember.Global
-        protected void ToggleNavMenu () => CollapseNavMenu = !CollapseNavMenu;
-    }
+    // ReSharper disable once UnusedMember.Global
+    protected void ToggleNavMenu () => CollapseNavMenu = !CollapseNavMenu;
 }
