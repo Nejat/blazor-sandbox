@@ -7,7 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["data-sandbox/data-sandbox.csproj", "data-sandbox/"]
-COPY ["data-model/data-model.csproj", "data-model/"]
+COPY ["libraries/data-model/data-model.csproj", "data-model/"]
 RUN dotnet restore "data-sandbox/data-sandbox.csproj"
 COPY . .
 WORKDIR "/src/data-sandbox"

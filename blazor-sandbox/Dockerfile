@@ -8,12 +8,12 @@ EXPOSE 443
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["blazor-sandbox/blazor-sandbox.csproj", "blazor-sandbox/"]
-COPY ["ui-components/ui-components.csproj", "ui-components/"]
-COPY ["razor-components/razor-components.csproj", "razor-components/"]
-COPY ["data-model/data-model.csproj", "data-model/"]
-COPY ["data-service/data-service.csproj", "data-service/"]
-COPY ["gRPC-client/gRPC-client.csproj", "gRPC-client/"]
-COPY ["toolbox/toolbox.csproj", "toolbox/"]
+COPY ["libraries/ui-components/ui-components.csproj", "ui-components/"]
+COPY ["libraries/razor-components/razor-components.csproj", "razor-components/"]
+COPY ["libraries/data-model/data-model.csproj", "data-model/"]
+COPY ["libraries/data-service/data-service.csproj", "data-service/"]
+COPY ["libraries/gRPC-client/gRPC-client.csproj", "gRPC-client/"]
+COPY ["libraries/toolbox/toolbox.csproj", "toolbox/"]
 RUN dotnet restore "blazor-sandbox/blazor-sandbox.csproj"
 COPY . .
 WORKDIR "/src/blazor-sandbox"
